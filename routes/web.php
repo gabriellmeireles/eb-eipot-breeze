@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\UserTypeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +17,14 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+
+Route::resource('user-type', UserTypeController::class)
+    ->only(['index', 'store'])
+    ->middleware('auth','verified');
+
+require __DIR__.'/auth.php';
