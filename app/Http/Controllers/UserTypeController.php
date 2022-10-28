@@ -35,12 +35,14 @@ class UserTypeController extends Controller
      */
     public function store(Request $request)
     {
-        $validated = $request->validate([
-            'name' => 'required|string|max:45',
+        $request->validate([
+            'user_type_name' => 'required|string|max:45',
         ]);
  
-        $request->user_type()->create($validated);
- 
+        UserType::create([
+            'name' => $request->user_type_name,
+        ]);
+
         return redirect(route('user-type.index'));
     }
 
