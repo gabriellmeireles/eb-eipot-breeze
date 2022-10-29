@@ -24,7 +24,7 @@ Route::get('/dashboard', function () {
 
 
 Route::resource('user-type', UserTypeController::class)
-    ->only(['index', 'store'])
+    ->only(['index', 'store', 'edit', 'update'])
     ->middleware('auth','verified');
 
 require __DIR__.'/auth.php';

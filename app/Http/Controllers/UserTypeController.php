@@ -14,7 +14,11 @@ class UserTypeController extends Controller
      */
     public function index()
     {
-        return view('user_type.index');
+        
+        return view('user_type.index', [
+            'pageTitle' => 'Tipo de Usuário',
+            'userTypes' => UserType::all()
+        ]);
     }
 
     /**
